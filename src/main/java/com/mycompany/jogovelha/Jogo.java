@@ -10,7 +10,7 @@ package com.mycompany.jogovelha;
  * @author Gabriel Alves
  */
 public class Jogo {
-    Tabuleiro tabuleiro;
+    Tabuleiro tabuleiro  ;
     Jogador jogador1;
     Jogador jogador2;
     private int rodada = 1, vez = 1;
@@ -68,6 +68,7 @@ public class Jogo {
             return -1;
         }return 0;
     }
+     
     public int vez(){
         if(vez%2 == 1)
             return 1;

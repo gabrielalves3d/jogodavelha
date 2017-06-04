@@ -12,8 +12,14 @@ package com.mycompany.jogovelha;
 public class Tabuleiro {
     private int[][] tabuleiro = new int[3][3];
 
+    public Tabuleiro(int [][]tabuleiro) {
+        this.tabuleiro=tabuleiro;
+    }
+
     public Tabuleiro() {
     }
+    
+    
 
     public void gerarTabuleiro() {
         for (int linha = 0; linha < 3; linha++) {
