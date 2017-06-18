@@ -15,24 +15,24 @@ public class Jogo {
     Jogador jogador2;
     private int rodada = 1, vez = 1;
 
-    Jogo(){
-        tabuleiro = new Tabuleiro();
+    Jogo(Tabuleiro tabuleiro){
+        this.tabuleiro = tabuleiro;
         jogador1 = new Jogador(1);
         jogador2 = new Jogador(2);
         
-        while (jogada());
+        while (gerenciarJogo());
     }
     
-    public boolean jogada(){
-        if(ganhou()==0){
+    public boolean gerenciarJogo(){
+        if(finalizarJogo()==0){
             System.out.println("----------------------");
             System.out.println("\nRodada "+rodada);
             System.out.println("É a vez do jogador " + vez() );
             
             if(vez()==1)
-                jogador1.jogar(tabuleiro);
+                jogador1.realizarTentativa(tabuleiro);
             else
-                jogador2.jogar(tabuleiro);
+                jogador2.realizarTentativa(tabuleiro);
             
             
             if(tabuleiro.finalizarJogo()){
@@ -44,7 +44,7 @@ public class Jogo {
 
             return true;
         } else{
-            if(ganhou() == -1 )
+            if(finalizarJogo() == 1 )
                 System.out.println("Jogador 1 ganhou!");
             else
                 System.out.println("Jogador 2 ganhou!");
@@ -53,19 +53,19 @@ public class Jogo {
         }
             
     } 
-     private int ganhou(){
+    public int finalizarJogo(){
         if(tabuleiro.checarLinhas()==1){
            return 1; 
         }else if(tabuleiro.checarColunas()==1){
             return 1;
         }else if(tabuleiro.checarDiagonais()==1){
             return 1;
-        }else if(tabuleiro.checarLinhas()==-1){
-            return -1;
-        }else if(tabuleiro.checarColunas()==-1){
-            return -1;
-        }else if (tabuleiro.checarDiagonais()==-1){
-            return -1;
+        }else if(tabuleiro.checarLinhas()==2){
+            return 2;
+        }else if(tabuleiro.checarColunas()==2){
+            return 2;
+        }else if (tabuleiro.checarDiagonais()==2){
+            return 2;
         }return 0;
     }
      

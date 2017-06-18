@@ -11,7 +11,8 @@ package com.mycompany.jogovelha;
  */
 public class JogoDaVelha {
     public static void main(String[] args) {
-        Jogo jogo = new Jogo();
+        Tabuleiro tabuleiro = new Tabuleiro();
+        Jogo jogo = new Jogo(tabuleiro);
        
     }
 }

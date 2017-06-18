@@ -21,25 +21,13 @@ public class Jogador {
         this.jogador = jogador;
     }
 
-    public boolean checarTentativa(int[] tentativa, Tabuleiro tabuleiro) {
-        if (tabuleiro.getPosicao(tentativa) == 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public void jogar(Tabuleiro tabuleiro) {
-        tentativa(tabuleiro);
-        tabuleiro.setPosicao(tentativa, jogador);
-    }
-
-    public void tentativa(Tabuleiro tabuleiro) {
+    public void realizarTentativa(Tabuleiro tabuleiro) {
         tabuleiro.exibirTabuleiro();
         do {
             do {
                 System.out.print("Linha: ");
                 tentativa[0] = teclado.nextInt();
+
 
                 if (tentativa[0] > 3 || tentativa[0] < 1) {
                     System.out.println("Linha inválida. É 1, 2 ou 3");
@@ -56,14 +44,26 @@ public class Jogador {
                 }
 
             } while (tentativa[1] > 3 || tentativa[1] < 1);
+                
+            
 
             tentativa[0]--;
             tentativa[1]--;
-
+            tabuleiro.mudarTabuleiro(tentativa, jogador);
             if (!checarTentativa(tentativa, tabuleiro)) {
                 System.out.println("Esse local já foi marcado. Tente outro.");
             }
         } while (!checarTentativa(tentativa, tabuleiro));
     }
+    public boolean checarTentativa(int[] tentativa, Tabuleiro tabuleiro) {
+        if (tabuleiro.verPosicao(tentativa) == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    
+    
 
 }
